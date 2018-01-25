@@ -11,8 +11,9 @@
   <servlet>
     <servlet-name>myServlet</servlet-name>
     <servlet-class>personal.chencs.practice.servlet.MyServlet</servlet-class>
+    <!--<load-on-startup>1</load-on-startup>-->
   </servlet>
-  
+
   <servlet-mapping>
     <servlet-name>myServlet</servlet-name>
     <url-pattern>/myServlet</url-pattern>
