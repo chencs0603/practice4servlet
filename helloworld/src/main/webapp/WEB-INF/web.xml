@@ -19,4 +19,18 @@
     <url-pattern>/myServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>configServlet</servlet-name>
+    <servlet-class>personal.chencs.practice.servlet.ConfigServlet</servlet-class>
+    <init-param>
+      <param-name>data</param-name>
+      <param-value>config servlet init data</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>configServlet</servlet-name>
+    <url-pattern>/configServlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>
