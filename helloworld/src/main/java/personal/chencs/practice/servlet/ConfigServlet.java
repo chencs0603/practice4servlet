@@ -24,6 +24,8 @@ public class ConfigServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        String data = this.getServletConfig().getInitParameter("data");
+
         String data = getInitParameter("data");
 
         OutputStream output = resp.getOutputStream();
