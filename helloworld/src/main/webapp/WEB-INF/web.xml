@@ -27,7 +27,7 @@
       <param-value>config servlet init data</param-value>
     </init-param>
   </servlet>
-  
+
   <servlet-mapping>
     <servlet-name>configServlet</servlet-name>
     <url-pattern>/configServlet</url-pattern>

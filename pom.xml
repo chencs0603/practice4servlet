@@ -12,6 +12,7 @@
 
     <modules>
         <module>helloworld</module>
+        <module>response</module>
     </modules>
 
     <properties>

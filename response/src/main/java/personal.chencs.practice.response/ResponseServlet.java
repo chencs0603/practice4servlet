@@ -1,4 +1,4 @@
-package personal.chencs.practice.servlet;
+package personal.chencs.practice.response;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
