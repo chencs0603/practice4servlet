@@ -5,7 +5,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
+import java.net.URLEncoder;
 
 /**
  * @author: chencs
@@ -17,8 +18,37 @@ public class ResponseServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        sendChinaDataOutputStream(resp);
+        downloadFile(resp);
 
+    }
+
+    private void downloadFile(HttpServletResponse response) throws IOException {
+        String path = this.getServletContext().getRealPath("//images//海.jpg");
+        String fileName = path.substring(path.lastIndexOf("\\") + 1);
+
+        // 设置以下载方式打开文件，并设置默认文件名，文件名中出现中文，为防止中文乱码，需要URL编码
+        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
+
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+
+        try {
+            inputStream = new FileInputStream(path);
+            outputStream = response.getOutputStream();
+            int length = 0;
+            byte[] buffer = new byte[1024];
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+        } finally {
+            if (null != inputStream) {
+                try {
+                    inputStream.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void sendChinaDataOutputStream(HttpServletResponse response) throws IOException {
