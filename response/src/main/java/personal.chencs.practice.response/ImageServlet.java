@@ -59,9 +59,13 @@ public class ImageServlet extends HttpServlet {
             ((Graphics2D) graphics).rotate(-degree*Math.PI/180, position, 20);
             position += 30;
         }
+        // 控制浏览器不要缓存
+        resp.setDateHeader("expires", -1);
+        resp.setHeader("Cache-Control", "no-cache");
+        resp.setHeader("Pragma", "no-cache");
         // 写入response
         resp.setHeader("Content-Type", "image/jpeg");
         ImageIO.write(bufferedImage, "jpg", resp.getOutputStream());
     }
-    
+
 }
