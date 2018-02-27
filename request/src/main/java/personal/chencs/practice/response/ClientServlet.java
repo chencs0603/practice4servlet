@@ -1,7 +1,5 @@
 package personal.chencs.practice.response;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,9 +25,10 @@ public class ClientServlet extends HttpServlet {
         // http://ServerName：Port/ContextPath/URI = URL
         System.out.println("http://ServerName：Port/ContextPath/URI:" + "http://" + req.getServerName() + ":" + req.getServerPort() + req.getContextPath() + req.getRequestURI());
 
+        System.out.println("Scheme:" + req.getScheme());
         System.out.println("ServerName:" + req.getServerName());
-        System.out.println("ContextPath:" +req.getContextPath());
-        System.out.println("ServletPath:" +req.getServletPath());
+        System.out.println("ContextPath:" + req.getContextPath());
+        System.out.println("ServletPath:" + req.getServletPath());
 
         // http请求的请求行的参数部分，格式：key=value
         System.out.println("QueryString:" + req.getQueryString());
