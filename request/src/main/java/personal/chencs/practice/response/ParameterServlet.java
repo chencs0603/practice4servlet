@@ -20,10 +20,12 @@ public class ParameterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        getParameter(req);
-        System.out.println(req.getParameter("username"));
-        getInputStream(req);
+
+//        getInputStream(req);
 
 //        getReader(req);
+
+        chineseErrorCode(req);
 
     }
 
@@ -83,6 +85,17 @@ public class ParameterServlet extends HttpServlet {
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
+    }
+
+    // 解决中文乱码问题
+    private void chineseErrorCode(HttpServletRequest req) throws IOException {
+        // GET请求：tomcat8不会出现中文乱码问题 tomcat7及以下版本通过以下方法解决中文乱码问题
+        System.out.println(new String(req.getParameter("username").getBytes("ISO-8859-1"), "UTF-8"));
+
+
+        // POST请求：request.setCharacterEncoding设置getParameter的解码方式
+        req.setCharacterEncoding("UTF-8");
+        System.out.println(req.getParameter("username"));
     }
 
 }
