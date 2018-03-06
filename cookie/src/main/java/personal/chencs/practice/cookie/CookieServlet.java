@@ -46,7 +46,7 @@ public class CookieServlet extends HttpServlet {
         // 特别注意：cookie值中不能包含特殊字符（等号、空格、分号等），需要进行URL编码
         Cookie cookie = new Cookie(cookieName, URLEncoder.encode(currentTime, "UTF-8"));
         cookie.setMaxAge(7*24*3600);
-        cookie.setPath("/");
+        cookie.setPath("/cookie");
 
         resp.addCookie(cookie);
     }
